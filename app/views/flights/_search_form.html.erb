@@ -1,0 +1,37 @@
+<h3>Search Flights</h3>
+
+<%= form_with url: flights_path, method: "GET", local: true do |f| %>
+
+  <div class="control">
+    <label>From:</label>
+    <div class="select">
+      <%= f.select(:from_airport_id, @airport_options) %>
+    </div>
+  </div>
+
+  <div class="control">
+    <label>To:</label>
+    <div class="select">
+      <%= f.select(:to_airport_id, @airport_options) %>
+    </div>
+  </div>
+
+  <div class="control">
+    <label>Number of Passengers:</label>
+    <div class="select">
+      <%= f.select(:passenger_count, (1..4)) %>
+    </div>
+  </div>
+
+  <div class="control">
+    <label>Date:</label>
+    <div class="select">
+      <%= f.select(:takeoff_datetime, @date_options) %>
+    </div>
+  </div>
+
+  <div class="control">
+    <%= f.submit "Search" %>
+  </div>
+
+<% end %>

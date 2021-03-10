@@ -3,7 +3,9 @@ class FlightsController < ApplicationController
     @airport_options = Airport.all.map { |a| [a.code, a.id] }
     @date_options = Flight.all.map  { |f| f.takeoff_datetime.to_date }.uniq.sort
 
-    @available_flights = Flight.search(params[:flight])
+    if params
+      @available_flights = Flight.search(params)
+    end
   end
 
   private

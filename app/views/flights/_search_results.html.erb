@@ -1,0 +1,29 @@
+<h3>Search Results</h3>
+
+<table class="talbe">
+  <thead>
+    <th>Departure:</th>
+    <th>Arrival:</th>
+    <th>Take Off:</th>
+    <th>Duration</th>
+  </thead>
+
+  <tbody>
+    <% @available_flights.each do |f| %>
+      <tr>
+        <td>
+          <%= f.from_airport.code %>
+        </td>
+        <td>
+          <%= f.to_airport.code %>
+        </td>
+        <td>
+          <%= f.takeoff_datetime %>
+        </td>
+        <td>
+          <%= f.duration %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

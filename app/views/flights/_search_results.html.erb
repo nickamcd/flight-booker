@@ -11,6 +11,7 @@
 
   <tbody>
     <%= form_with url: new_booking_path, method: "GET", local: true do |f| %>
+      <%= f.hidden_field :passenger_count, value: params[:passenger_count]%>
       <% @available_flights.each do |flight| %>
         <tr>
           <td>

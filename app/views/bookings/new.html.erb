@@ -1,8 +1,9 @@
 <h1>Book your Flight</h1>
 
 <%= form_with model: @booking, local: true do |f| %>
+  <% i = 0 %>
   <%= f.fields_for :passengers do |passenger| %>
-    <h3>New Passenger:</h3>
+    <h3>Passenger <%= i += 1 %>:</h3>
     <div>
       <%= passenger.label :first_name %>
       <div class="control">

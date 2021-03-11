@@ -1,5 +1,32 @@
-<h1>Book you Flight</h1>
+<h1>Book your Flight</h1>
 
 <%= form_with model: @booking, local: true do |f| %>
-  
+  <%= f.fields_for :passengers do |passenger| %>
+    <h3>New Passenger:</h3>
+    <div>
+      <%= passenger.label :first_name %>
+      <div class="control">
+        <%= passenger.text_field :first_name, class: "input", type: "text" %>
+      </div>
+    </div>
+
+    <div>
+      <%= passenger.label :last_name %>
+      <div class="control">
+        <%= passenger.text_field :last_name, class: "input", type: "text" %>
+      </div>
+    </div>
+
+    <div>
+      <%= passenger.label :email %>
+      <div class="control">
+        <%= passenger.text_field :email, class: "input", type: "text" %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="control">
+    <%= f.submit "Buy Tickets" %>
+  </div>
 <% end %>

@@ -1,5 +1,12 @@
 <h1>booking show page</h1>
 
+<div class="content">
+  <p>From <% @booking.flight.from_airport.code %> to <%= @booking.flight.to_airport.code %></p>
+</div>
+
 <% @booking.passengers.each do |passenger| %>
-  <!--<%= passenger.first_name %> <%= passenger.last_name %>-->
+  <div>
+    <p><strong>Passenger Name:</strong></p>
+    <p><%= passenger.first_name %> <%= passenger.last_name %></p>
+  </div>
 <% end %>

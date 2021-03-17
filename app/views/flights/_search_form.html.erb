@@ -5,33 +5,35 @@
   <div class="control">
     <label>From:</label>
     <div class="select">
-      <%= f.select(:from_airport_id, @airport_options) %>
+      <%= f.select :from_airport_id, options_for_select(@airport_options), {},  class: "form-control" %>
     </div>
   </div>
 
   <div class="control">
     <label>To:</label>
     <div class="select">
-      <%= f.select(:to_airport_id, @airport_options) %>
+      <%= f.select :to_airport_id, options_for_select(@airport_options), {}, class: "form-control" %>
     </div>
   </div>
 
   <div class="control">
     <label>Number of Passengers:</label>
     <div class="select">
-      <%= f.select(:passenger_count, (1..4)) %>
+      <%= f.select :passenger_count, (1..4), {}, class: "form-control" %>
     </div>
   </div>
 
   <div class="control">
     <label>Date:</label>
     <div class="select">
-      <%= f.select(:takeoff_datetime, @date_options) %>
+      <%= f.select :takeoff_datetime, options_for_select(@date_options), {}, class: "form-control" %>
     </div>
   </div>
 
-  <div class="control">
-    <%= f.submit "Search" %>
+  <br />
+
+  <div class="control text-center">
+    <%= f.submit "Search", class: 'btn btn-success' %>
   </div>
 
 <% end %>

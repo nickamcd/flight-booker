@@ -1,7 +1,7 @@
 <h3>Search Results</h3>
 
-<table class="table">
-  <thead>
+<table class="table table-striped">
+  <thead class="thead-dark">
     <th>Departure:</th>
     <th>Arrival:</th>
     <th>Take Off:</th>
@@ -14,19 +14,19 @@
       <%= f.hidden_field :passenger_count, value: params[:passenger_count]%>
       <% @available_flights.each do |flight| %>
         <tr>
-          <td>
+          <td class="text-center">
             <%= flight.from_airport.code %>
           </td>
-          <td>
+          <td class="text-center">
             <%= flight.to_airport.code %>
           </td>
-          <td>
+          <td class="text-center">
             <%= flight.takeoff_datetime %>
           </td>
-          <td>
+          <td class="text-center">
             <%= flight.duration %> minutes
           </td>
-          <td>
+          <td class="text-center">
             <%= f.radio_button :flight_id, flight.id %>
           </td>
         </tr>

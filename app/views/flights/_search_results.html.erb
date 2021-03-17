@@ -9,33 +9,33 @@
     <th>Select:</th>
   </thead>
 
-  <%= form_with url: new_booking_path, method: "GET", local: true do |f| %>
-    <tbody>
-        <%= f.hidden_field :passenger_count, value: params[:passenger_count]%>
-        <% @available_flights.each do |flight| %>
-          <tr>
-            <td>
-              <%= flight.from_airport.code %>
-            </td>
-            <td>
-              <%= flight.to_airport.code %>
-            </td>
-            <td>
-              <%= flight.takeoff_datetime %>
-            </td>
-            <td>
-              <%= flight.duration %> minutes
-            </td>
-            <td>
-              <%= f.radio_button :flight_id, flight.id %>
-            </td>
-          </tr>
-        <% end %>
-    </tbody>
-  </table>
-  
-  <div class="control text-center">
-    <%= f.submit "Book Flight", class: 'btn btn-success' %>
-  </div>
+<%= form_with url: new_booking_path, method: "GET", local: true do |f| %>
+  <tbody>
+      <%= f.hidden_field :passenger_count, value: params[:passenger_count]%>
+      <% @available_flights.each do |flight| %>
+        <tr>
+          <td>
+            <%= flight.from_airport.code %>
+          </td>
+          <td>
+            <%= flight.to_airport.code %>
+          </td>
+          <td>
+            <%= flight.takeoff_datetime %>
+          </td>
+          <td>
+            <%= flight.duration %> minutes
+          </td>
+          <td>
+            <%= f.radio_button :flight_id, flight.id %>
+          </td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
 
-  <% end %>  
+<div class="control text-center">
+  <%= f.submit "Book Flight", class: 'btn' %>
+</div>
+
+<% end %>  

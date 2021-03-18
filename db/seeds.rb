@@ -9,6 +9,7 @@
 ActiveRecord::Base.transaction do
   Airport.destroy_all
   Flight.destroy_all
+  Booking.destroy_all
 end
 
 airports = Airport.create([

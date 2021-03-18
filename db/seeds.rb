@@ -10,18 +10,23 @@ ActiveRecord::Base.transaction do
   Airport.destroy_all
   Flight.destroy_all
   Booking.destroy_all
+  Passenger.destroy_all
 end
 
 airports = Airport.create([
   { code: 'SFO' },
-  { code: 'NYC' }
+  { code: 'NYC' },
+  { code: 'LAX' },
+  { code: 'JFK' },
+  { code: 'MDW' },
+  { code: 'LGB' }
 ])
 
-flights = Flight.create([
-  { from_airport_id: airports.first.id, to_airport_id: airports.last.id, duration: 300, takeoff_datetime: DateTime.now + 1 },
-  { from_airport_id: airports.first.id, to_airport_id: airports.last.id, duration: 300, takeoff_datetime: DateTime.now + 3 },
-  { from_airport_id: airports.first.id, to_airport_id: airports.last.id, duration: 300, takeoff_datetime: DateTime.now + 5 },
-  { from_airport_id: airports.last.id, to_airport_id: airports.first.id, duration: 360, takeoff_datetime: DateTime.now + 2 },
-  { from_airport_id: airports.last.id, to_airport_id: airports.first.id, duration: 360, takeoff_datetime: DateTime.now + 4 },
-  { from_airport_id: airports.last.id, to_airport_id: airports.first.id, duration: 360, takeoff_datetime: DateTime.now + 6 }
-])
+Airport.all.each do |airport|
+  from_airport = airport
+  to_airport = Airport.all.sample
+  to_airport = Airport.all.sample until to_airport != from_airport
+  takeoff_datetime = DateTime.now + rand(1..5)
+  duration = rand(260..380)
+  Flight.create({ from_airport_id: from_airport.id, to_airport_id: to_airport.id, takeoff_datetime: takeoff_datetime, duration: duration })
+end

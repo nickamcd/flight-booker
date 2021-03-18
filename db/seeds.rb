@@ -22,11 +22,13 @@ airports = Airport.create([
   { code: 'LGB' }
 ])
 
-Airport.all.each do |airport|
-  from_airport = airport
-  to_airport = Airport.all.sample
-  to_airport = Airport.all.sample until to_airport != from_airport
-  takeoff_datetime = DateTime.now + rand(1..5)
-  duration = rand(260..380)
-  Flight.create({ from_airport_id: from_airport.id, to_airport_id: to_airport.id, takeoff_datetime: takeoff_datetime, duration: duration })
-end
+100.times {
+  Airport.all.each do |airport|
+    from_airport = airport
+    to_airport = Airport.all.sample
+    to_airport = Airport.all.sample until to_airport != from_airport
+    takeoff_datetime = DateTime.now + rand(1..5)
+    duration = rand(260..380)
+    Flight.create({ from_airport_id: from_airport.id, to_airport_id: to_airport.id, takeoff_datetime: takeoff_datetime, duration: duration })
+  end
+}

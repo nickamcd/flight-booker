@@ -26,10 +26,21 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-8 offset-md-2">
+      <div class="col-md-8 offset-md-2 text-center">
+
+        <% unless @available_flights.nil? %>
+          <% if @available_flights.any? %>
+            <%= render 'search_results' %>
+          <% else %>
+            <br />
+            <p>Sorry! We were unable to find any flights with the given input.</p>
+          <% end %>
+        <% end %>
+      <!--
         <% if @available_flights %>
           <%= render 'search_results' %>
         <% end %>  
+        -->
       </div>
     </div>
   </div>

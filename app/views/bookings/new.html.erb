@@ -4,32 +4,33 @@
   <% i = 0 %>
   <%= f.fields_for :passengers do |passenger| %>
     <h3>Passenger <%= i += 1 %>:</h3>
-    <div>
+    <div class="content text-center">
       <%= passenger.label :first_name %>
       <div class="control">
-        <%= passenger.text_field :first_name, class: "input", type: "text" %>
+        <%= passenger.text_field :first_name, class: "input", type: "text", required: true %>
       </div>
     </div>
 
-    <div>
+    <div class="content text-center">
       <%= passenger.label :last_name %>
       <div class="control">
-        <%= passenger.text_field :last_name, class: "input", type: "text" %>
+        <%= passenger.text_field :last_name, class: "input", type: "text", required: true %>
       </div>
     </div>
 
-    <div>
+    <div class="content text-center">
       <%= passenger.label :email %>
       <div class="control">
-        <%= passenger.text_field :email, class: "input", type: "text" %>
+        <%= passenger.text_field :email, class: "input", type: "text", required: true %>
       </div>
     </div>
-
   <% end %>
 
   <%= f.hidden_field :flight_id, value: params[:flight_id] %>
+  
+  <br />
 
-  <div class="control">
-    <%= f.submit "Buy Tickets" %>
+  <div class="control text-center">
+    <%= f.submit "Buy Tickets", class: 'btn btn-outline-dark' %>
   </div>
 <% end %>

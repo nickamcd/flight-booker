@@ -1,0 +1,7 @@
+Thank you for booking your flight with us!
+Please review the details of your trip below.
+
+Departure:  <%= @booking.flight.from_airport.code %>
+Arrival:    <%= @booking.flight.to_airport.code %>
+Date:       <%= @booking.flight.takeoff_datetime %>
+Duration:   <%= @booking.flight.duration %>

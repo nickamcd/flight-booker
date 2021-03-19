@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equive='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for booking your flight with us!</h1>
+    <p>Please review the details of your trip below.</p>
+
+    <table>
+      <tr>
+        <th>Departure:</th>
+        <th>Arrival:</th>
+        <th>Take Off:</th>
+        <th>Duration</th>
+      </tr>
+      <tr>
+        <td><%= @booking.flight.from_airport.code %></td>
+        <td><%= @booking.flight.to_airport.code %></td>
+        <td><%= @booking.flight.takeoff_datetime %></td>
+        <td><%= @booking.flight.duration %></td>
+      </tr>
+    </table>
+  </body>
+</html>

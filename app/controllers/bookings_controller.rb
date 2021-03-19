@@ -8,16 +8,14 @@ class BookingsController < ApplicationController
   end
 
   def create
-    puts "here"
     @booking = Booking.new(booking_params)
     if @booking.save
-      puts "saves"
       flash[:notice] = 'Booking created successfully!'
+      PassengerMailer.with(booking_id: @booking.id).thank_you_email.deliver_now
       redirect_to booking_path(@booking)
     else
-      puts "fails"
       flash[:alert] = 'Oh no! Something went wrong...'
-      render "new"
+      render 'new'
     end
   end
 
